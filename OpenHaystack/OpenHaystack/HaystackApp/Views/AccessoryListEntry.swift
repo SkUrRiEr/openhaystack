@@ -98,7 +98,7 @@ struct AccessoryListEntry: View {
             }
             Divider()
             Button("Mark as \(accessory.isDeployed ? "deployable" : "deployed")", action: { accessory.isDeployed.toggle() })
-            
+
             Button("Copy private Key B64", action: { copyPrivateKey(accessory: accessory) })
         }
     }
@@ -190,11 +190,11 @@ struct AccessoryListEntry: View {
             assert(false)
         }
     }
-    
+
     func copyPrivateKey(accessory: Accessory) {
         let privateKey = accessory.privateKey
         let keyB64 = privateKey.base64EncodedString()
-        
+
         let pasteboard = NSPasteboard.general
         pasteboard.prepareForNewContents(with: .currentHostOnly)
         pasteboard.setString(keyB64, forType: .string)
