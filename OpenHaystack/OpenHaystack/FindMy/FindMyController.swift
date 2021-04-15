@@ -15,6 +15,9 @@ import SwiftUI
 class FindMyController: ObservableObject {
     @Published var error: Error?
     @Published var devices = [FindMyDevice]()
+    
+    /// If we use an intermediate server for fetching reports its URL has to be stored here
+    var serverURL: URL?
 
     func loadPrivateKeys(from data: Data, with searchPartyToken: Data, completion: @escaping (Error?) -> Void) {
         do {
@@ -110,6 +113,7 @@ class FindMyController: ObservableObject {
         }
     }
 
+<<<<<<< HEAD
     func fetchReports(with searchPartyToken: Data, completion: @escaping (Error?) -> Void) {
 
         DispatchQueue.global(qos: .background).async { [weak self] in
@@ -191,6 +195,8 @@ class FindMyController: ObservableObject {
 
     }
 
+=======
+>>>>>>> 81d7586 (- Added an OpenHaystack server and iOS app.)
     func decryptReports(completion: () -> Void) {
         print("Decrypting reports")
 
@@ -240,5 +246,10 @@ class FindMyController: ObservableObject {
 
 enum FindMyErrors: Error {
     case decodingPlistFailed(message: String)
+<<<<<<< HEAD
     case objectReleased
+=======
+    case noServerURL
+    case serverError(message: String)
+>>>>>>> 81d7586 (- Added an OpenHaystack server and iOS app.)
 }
